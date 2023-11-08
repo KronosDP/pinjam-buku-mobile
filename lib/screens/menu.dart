@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-
-class ShopItem {
-  final String name;
-  final IconData icon;
-  final Color color;
-
-  ShopItem(this.name, this.icon, this.color);
-}
+import 'package:pinjam_buku/screens/shoplist_form.dart';
+import 'package:pinjam_buku/widgets/shopcard.dart';
+import 'package:pinjam_buku/screens/shoplist.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -33,6 +28,8 @@ class MyHomePage extends StatelessWidget {
         title: const Text(
           'Pinjam Buku',
         ),
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
@@ -92,6 +89,16 @@ class ShopCard extends StatelessWidget {
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
+
+          // Navigasi ke halaman yang sesuai
+          if (item.name == "Tambah Buku") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ShopFormPage(),
+                ));
+          }
+
         },
         child: Container(
           // Container untuk menyimpan Icon dan Text
