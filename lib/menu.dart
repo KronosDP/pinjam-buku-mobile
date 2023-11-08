@@ -83,7 +83,7 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: item.color,
+      color: item.color, // Set warna card sesuai item.color
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
