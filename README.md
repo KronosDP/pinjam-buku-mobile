@@ -142,7 +142,7 @@ class LeftDrawer extends StatelessWidget {
 ```
 
 Kemudian saya membuat shoplist_form.dart yang berisikan sebuah screen yang berisi form untuk kita isi.
-
+```dart
 import 'package:flutter/material.dart';
 import 'package:pinjam_buku/widgets/left_drawer.dart';
 
@@ -305,7 +305,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
     );
   }
 }
-
+```
 
 Terakhir saya membuat shopcard yang adalah object card yang ingin kita tampilkan di awal. 
 ```dart
