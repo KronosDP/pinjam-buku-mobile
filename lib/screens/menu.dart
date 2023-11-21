@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:pinjam_buku/screens/list_product.dart';
+import 'package:pinjam_buku/screens/login.dart';
+import 'package:pinjam_buku/widgets/left_drawer.dart';
 import 'package:pinjam_buku/screens/shoplist_form.dart';
 import 'package:pinjam_buku/widgets/shopcard.dart';
 
@@ -30,6 +35,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
@@ -78,11 +84,12 @@ class ShopCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Material(
       color: item.color, // Set warna card sesuai item.color
       child: InkWell(
         // Area responsive terhadap sentuhan
-        onTap: () {
+        onTap: () async {
           // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
@@ -96,8 +103,34 @@ class ShopCard extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => const ShopFormPage(),
                 ));
-          }
+          } else if (item.name == "Lihat Buku") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProductPage(),
+                ));
+          } else if (item.name == "Logout") {
+            final response = await request.logout(
+                // Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                "http://10.0.2.2:8000/auth/logout/");
+                // "http://127.0.0.1:8000/json/");
+            String message = response["message"];
 
+            if (response['status']) {
+              String uname = response["username"];
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("$message Sampai jumpa, $uname."),
+              ));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("$message"),
+              ));
+            }
+          }
         },
         child: Container(
           // Container untuk menyimpan Icon dan Text
