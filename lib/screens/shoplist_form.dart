@@ -127,7 +127,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   if (_formKey.currentState!.validate()) {
                     final response = await request.postJson(
                         // "http://127.0.0.1:8000/create-flutter/",
-                        "http://10.0.2.2:8000/create-flutter/",
+                        // "http://10.0.2.2:8000/create-flutter/",
+                        "https://darrel-danadyaksa-tugas.pbp.cs.ui.ac.id/create-flutter/",
                         jsonEncode(<String, String>{
                           'name': _name,
                           'amount': _amount.toString(),
