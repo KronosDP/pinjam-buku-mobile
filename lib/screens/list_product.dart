@@ -38,13 +38,13 @@ class _ProductPageState extends State<ProductPage> {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object Books
-    List<Books> list_product = [];
+    List<Books> listProduct = [];
     for (var d in data) {
       if (d != null) {
-        list_product.add(Books.fromJson(d));
+        listProduct.add(Books.fromJson(d));
       }
     }
-    return list_product;
+    return listProduct;
   }
 
   @override

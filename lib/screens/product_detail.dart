@@ -10,7 +10,7 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detail Book'),
+        title: const Text('Detail Book'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -19,11 +19,11 @@ class ProductDetailPage extends StatelessWidget {
           children: [
             Text(
               'Title: ${product.fields.name}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text('Amount: ${product.fields.amount}'),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text('Description: ${product.fields.description}'),
             // Tambahkan atribut lainnya sesuai kebutuhan
 
@@ -32,7 +32,7 @@ class ProductDetailPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Back to List'),
+              child: const Text('Back to List'),
             ),
           ],
         ),

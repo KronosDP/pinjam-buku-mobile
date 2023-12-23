@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:pinjam_buku/screens/login.dart';
-import 'package:pinjam_buku/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());

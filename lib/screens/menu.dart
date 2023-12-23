@@ -128,7 +128,7 @@ class ShopCard extends StatelessWidget {
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("$message"),
+                content: Text(message),
               ));
             }
           }
